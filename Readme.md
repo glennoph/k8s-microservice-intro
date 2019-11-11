@@ -55,3 +55,24 @@ Source: [src/pod01.yml](src/pod01.yml)
 * Describe pod :: `kubectl describe pod webapp`
 
 * Shell to pod :: `kubectl -it  exec webapp sh`
+
+## Services
+Pods are cattle, short lived.
+
+Services are long lived.
+
+* Selector of a service connects to pod via label on pod 
+
+### Service API Ref
+* [Service v1 core example](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#service-v1-core)
+
+* See [src/pod01-service.yml](src/pod01-service.yml)
+
+* apply service :: `kubectl apply -f src/pod01-service.yml`
+* also add label to the webapp
+* apply webapp :: `kubectl apply -f src/pod01.yml`
+
+* find the service ip
+`kubectl get service --all-namespaces`
+
+* access page http://10.104.65.32:30080/ ... page took too long to respond 
