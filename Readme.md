@@ -72,7 +72,20 @@ Services are long lived.
 * also add label to the webapp
 * apply webapp :: `kubectl apply -f src/pod01.yml`
 
-* find the service ip
-`kubectl get service --all-namespaces`
+* find the ip
+`minikube ip`
 
-* access page http://10.104.65.32:30080/ ... page took too long to respond 
+* access page http://192.168.99.100:30080/ ... displays map
+
+#### reconfig minikube
+* large
+```
+minikube delete
+minikube start --cpus=4 --memory=4096
+```
+* medium
+```
+minikube delete
+minikube start --cpus=6 --memory=8192
+```
+* retest  http://192.168.99.100:30080/ ... ok
