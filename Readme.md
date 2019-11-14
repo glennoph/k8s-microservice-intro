@@ -146,3 +146,21 @@ show labels for pods
 show labels for pods with selector release=0-5
 `kubectl get po --show-labels -l release=0-5`
 
+## Add queue pod and service 
+add queue pod to [src/queue/pods.yml](src/queue/pods.yml)
+add to services at [src/queue/services.yml](src/queue/services.yml)
+
+* deploy with command 
+`kubectl apply -f src/queue/`
+
+* get all
+`kubectl get all --show-labels`
+
+* decribe pod queue
+`kubectl describe pod queue`
+
+* check queue
+[http://192.168.99.100:30010](http://192.168.99.100:30010)
+
+cred: admin/admin 
+

@@ -1,0 +1,40 @@
+# -*- mode: k8s -*-
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+
+spec:
+  # selector defines the pods that are in the service
+  selector:
+    app: webapp
+    release: "0-5"
+    
+  ports:
+  - name: http
+    port: 80
+    nodePort: 30080 
+
+  # type ClusterIP for internal pods, NodePort for external pods
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-queue
+  
+spec:
+  # selector defines the pods that are in the service
+  selector:
+    app: queue
+    
+  ports:
+  - name: http
+    port: 8161
+    nodePort: 30010 
+
+  # type ClusterIP for internal pods, NodePort for external pods
+  type: NodePort
