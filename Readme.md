@@ -89,3 +89,51 @@ minikube delete
 minikube start --cpus=6 --memory=8192
 ```
 * retest  http://192.168.99.100:30080/ ... ok
+
+## add pod with release label
+note that the release needed to be quoted to avoid message : cannot convert int64 to string
+
+### new pod: 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  labels:
+    app: webapp
+    release: "0"
+  
+spec:
+  containers:
+  - name: webapp
+    image: richardchesterwood/k8s-fleetman-webapp-angular:release0
+    
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-release-0-5
+  labels:
+    app: webapp
+    release: "0-5"
+  
+spec:
+  containers:
+  - name: webapp
+    image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+```
+
+### new service
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+  
+spec:
+  # selector defines the pods that are in the service
+  selector:
+    app: webapp
+    release: "0-5"
+```
