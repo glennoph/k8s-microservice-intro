@@ -125,6 +125,7 @@ spec:
 ```
 
 ### new service
+* [src/pod01-service-0-5.yml](src/pod01-service-0-5.yml)
 ```
 apiVersion: v1
 kind: Service
