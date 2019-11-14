@@ -138,3 +138,11 @@ spec:
     app: webapp
     release: "0-5"
 ```
+## kubectl show labels 
+show labels for pods 
+
+`kubectl get po --show-labels`
+
+show labels for pods with selector release=0-5
+`kubectl get po --show-labels -l release=0-5`
+
