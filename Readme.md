@@ -44,7 +44,7 @@ spec:
     args: ["Hello World"]
 ```
 ### First Pod deploy
-Source: [src/pod01.yml](src/pod01.yml)
+Source: [src/pod-first/pod01.yml](src/pod-first/pod01.yml)
 * Start VirtualBox 
 * k8s status :: `minikube status` ... should be Running
 
@@ -66,7 +66,7 @@ Services are long lived.
 ### Service API Ref
 * [Service v1 core example](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#service-v1-core)
 
-* See [src/pod01-service.yml](src/pod01-service.yml)
+* See [src/pod01-service.yml](src/pod-first/pod01-service.yml)
 
 * apply service :: `kubectl apply -f src/pod01-service.yml`
 * also add label to the webapp
@@ -125,7 +125,7 @@ spec:
 ```
 
 ### new service
-* [src/pod01-service-0-5.yml](src/pod01-service-0-5.yml)
+* [src/pod-multrel-update/pod01-service-0-5.yml](src/pod-multrel-update/pod01-service-0-5.yml)
 ```
 apiVersion: v1
 kind: Service
