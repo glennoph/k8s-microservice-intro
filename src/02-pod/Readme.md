@@ -51,3 +51,18 @@ check service (should see Release 0.5 changes)
 http://192.168.99.100:30080
 
   - should see map in browser
+
+### Show Pods and Labels
+
+`kubectl get po --show-labels`
+
+### Describe Services
+* all services 
+
+`kubectl describe svc`
+
+* service: fleetman-webapp
+
+`kubectl describe svc fleetman-webapp`
+
+
