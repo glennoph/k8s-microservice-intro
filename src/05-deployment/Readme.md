@@ -1,29 +1,37 @@
-## 04-replicaset
+## 05-deployment
 
-maintains set of replica pods such that specified number of pods are running
+manages replica set of pods and allows controlled rate of deployment
 
 * Add queue and service for queue
 * The service access release 0-5 pod
 
 ### Apply yml with queue
-cd to src/04-replicasets
+cd to src/05-deployment
+
+* `kubectl delete rs --all`
+delete all replica sets
 
 * `kubectl apply -f pods.yml`
-
-  - apply pods.yml
+deploy the pods
 
 check service
 
 #### pods.yml contents
 [pods.yml](file:pods.yml)
 
-- ReplicaSet
+- Deployment
   - Pod : webapp-release-0-5 
   spec:
+    minReadySeconds: 10
+    replicas: 2
     template:
 	  metadata:
 	    labels:
 		  app: webapp
+	  spec:
+	    containers: ...
+
+* minReadySeconds - number of seconds after the new deployment before retiring the old pod
 
 - Pod : queue
   - label app:queue  image: k8s-fleetman-queue:release1
@@ -38,12 +46,12 @@ check service
     	
 	
 - Service : fleetman-webapp 
-  - selector:  app:webapp
+  - selector:  app: webapp
   - nodePort: 30080
 
 	
 - Service : fleetman-queue 
-  - selector:  app:queue
+  - selector:  app: queue
   - nodePort: 30010
 
 ### Access service 
